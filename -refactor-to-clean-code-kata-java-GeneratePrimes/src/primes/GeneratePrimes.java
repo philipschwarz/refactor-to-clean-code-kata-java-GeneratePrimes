@@ -13,7 +13,7 @@ public class GeneratePrimes
 {
     private static final int[] NO_PRIMES = new int[0];
     private static boolean[] crossedOut;
-    private static int[] primes;
+    private static int[] result;
 
     public static int[] generatePrimes(int maxValue)
     {
@@ -31,14 +31,14 @@ public class GeneratePrimes
             if (uncrossed(i))
                 count++; // bump count.
         }
-        primes = new int[count];
+        result = new int[count];
         // move the primes into the result
         for (int i = 2, j = 0; i < crossedOut.length; i++)
         {
             if (uncrossed(i)) // if prime
-                primes[j++] = i;
+                result[j++] = i;
         }
-        return primes; // return the primes
+        return result; // return the primes
     }
 
     private static void crossOutMultiples()
