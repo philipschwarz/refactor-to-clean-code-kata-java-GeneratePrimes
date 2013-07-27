@@ -21,35 +21,35 @@ public class GeneratePrimes
         }
         
         // declarations
-        boolean[] uncrossed = new boolean[maxValue + 1];
+        boolean[] crossedOut = new boolean[maxValue + 1];
         int i;
         // initialize array to true.
-        for (i = 0; i < uncrossed.length; i++)
-            uncrossed[i] = true;
+        for (i = 0; i < crossedOut.length; i++)
+            crossedOut[i] = false;
         // get rid of known non-primes
-        uncrossed[0] = uncrossed[1] = false;
+        crossedOut[0] = crossedOut[1] = true;
         // sieve
         int j;
-        for (i = 2; i < Math.sqrt(uncrossed.length) + 1; i++)
+        for (i = 2; i < Math.sqrt(crossedOut.length) + 1; i++)
         {
-            if (uncrossed[i]) // if i is uncrossed, cross its multiples.
+            if (!crossedOut[i]) // if i is uncrossed, cross its multiples.
             {
-                for (j = 2 * i; j < uncrossed.length; j += i)
-                    uncrossed[j] = false; // multiple is not prime
+                for (j = 2 * i; j < crossedOut.length; j += i)
+                    crossedOut[j] = true; // multiple is not prime
             }
         }
         // how many primes are there?
         int count = 0;
-        for (i = 0; i < uncrossed.length; i++)
+        for (i = 0; i < crossedOut.length; i++)
         {
-            if (uncrossed[i])
+            if (!crossedOut[i])
                 count++; // bump count.
         }
         int[] primes = new int[count];
         // move the primes into the result
-        for (i = 0, j = 0; i < uncrossed.length; i++)
+        for (i = 0, j = 0; i < crossedOut.length; i++)
         {
-            if (uncrossed[i]) // if prime
+            if (!crossedOut[i]) // if prime
                 primes[j++] = i;
         }
         return primes; // return the primes
