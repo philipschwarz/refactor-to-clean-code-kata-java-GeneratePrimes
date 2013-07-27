@@ -42,13 +42,22 @@ public class GeneratePrimes
 
     private static void crossOutMultiples()
     {
-        for (int i = 2; i < Math.sqrt(crossedOut.length) + 1; i++)
+        double limit = calculaterIterationLimit();
+        for (int i = 2; i < limit; i++)
         {
             if (uncrossed(i))
             {
                 crossOutMultiplesOf(i);
             }
         }
+    }
+
+    /**
+     * <Nice, clear explanation of why this optimisation is possible>
+     */
+    private static double calculaterIterationLimit()
+    {
+        return Math.sqrt(crossedOut.length) + 1;
     }
 
     private static void crossOutMultiplesOf(int i)
