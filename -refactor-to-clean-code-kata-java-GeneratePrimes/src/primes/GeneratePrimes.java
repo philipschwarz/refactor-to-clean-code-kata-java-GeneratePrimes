@@ -24,6 +24,12 @@ public class GeneratePrimes
         
         uncrossIntegersUpTo(maxValue);
         crossOutMultiples();
+        putUncrossedIntegersIntoResult();
+        return result;
+    }
+
+    private static void putUncrossedIntegersIntoResult()
+    {
         // how many primes are there?
         int count = 0;
         for (int i = 2; i < crossedOut.length; i++)
@@ -38,7 +44,6 @@ public class GeneratePrimes
             if (uncrossed(i)) // if prime
                 result[j++] = i;
         }
-        return result; // return the primes
     }
 
     private static void crossOutMultiples()
