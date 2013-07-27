@@ -23,7 +23,6 @@ public class GeneratePrimes
         
         crossedOut = new boolean[maxValue + 1];
         int i;
-        // initialize array to true.
         for (i = 0; i < crossedOut.length; i++)
             crossedOut[i] = false;
         // get rid of known non-primes
