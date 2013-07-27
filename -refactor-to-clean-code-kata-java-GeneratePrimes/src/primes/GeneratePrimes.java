@@ -30,20 +30,23 @@ public class GeneratePrimes
 
     private static void putUncrossedIntegersIntoResult()
     {
-        // how many primes are there?
+        result = new int[countPrimes()];
+        for (int i = 2, j = 0; i < crossedOut.length; i++)
+        {
+            if (uncrossed(i))
+                result[j++] = i;
+        }
+    }
+
+    private static int countPrimes()
+    {
         int count = 0;
         for (int i = 2; i < crossedOut.length; i++)
         {
             if (uncrossed(i))
-                count++; // bump count.
+                count++;
         }
-        result = new int[count];
-        // move the primes into the result
-        for (int i = 2, j = 0; i < crossedOut.length; i++)
-        {
-            if (uncrossed(i)) // if prime
-                result[j++] = i;
-        }
+        return count;
     }
 
     private static void crossOutMultiples()
