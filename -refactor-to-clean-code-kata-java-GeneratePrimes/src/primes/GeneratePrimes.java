@@ -22,31 +22,29 @@ public class GeneratePrimes
         }
         
         crossedOut = new boolean[maxValue + 1];
-        int i;
-        for (i = 0; i < crossedOut.length; i++)
+        for (int i = 0; i < crossedOut.length; i++)
             crossedOut[i] = false;
         // get rid of known non-primes
         crossedOut[0] = crossedOut[1] = true;
         // sieve
-        int j;
-        for (i = 2; i < Math.sqrt(crossedOut.length) + 1; i++)
+        for (int i = 2; i < Math.sqrt(crossedOut.length) + 1; i++)
         {
             if (uncrossed(i)) // if i is uncrossed, cross its multiples.
             {
-                for (j = 2 * i; j < crossedOut.length; j += i)
+                for (int j = 2 * i; j < crossedOut.length; j += i)
                     crossedOut[j] = true; // multiple is not prime
             }
         }
         // how many primes are there?
         int count = 0;
-        for (i = 0; i < crossedOut.length; i++)
+        for (int i = 0; i < crossedOut.length; i++)
         {
             if (uncrossed(i))
                 count++; // bump count.
         }
         int[] primes = new int[count];
         // move the primes into the result
-        for (i = 0, j = 0; i < crossedOut.length; i++)
+        for (int i = 0, j = 0; i < crossedOut.length; i++)
         {
             if (uncrossed(i)) // if prime
                 primes[j++] = i;
