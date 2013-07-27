@@ -17,8 +17,6 @@ package primes;
  * @author Alphonse
  * @version 13 Feb 2002 atp
  */
-import java.util.*;
-
 public class GeneratePrimes
 {
     /**
