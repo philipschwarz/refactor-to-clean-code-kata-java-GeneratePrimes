@@ -22,8 +22,6 @@ public class GeneratePrimes
         }
         
         uncrossIntegersUpTo(maxValue);
-        // get rid of known non-primes
-        crossedOut[0] = crossedOut[1] = true;
         // sieve
         for (int i = 2; i < Math.sqrt(crossedOut.length) + 1; i++)
         {
@@ -35,14 +33,14 @@ public class GeneratePrimes
         }
         // how many primes are there?
         int count = 0;
-        for (int i = 0; i < crossedOut.length; i++)
+        for (int i = 2; i < crossedOut.length; i++)
         {
             if (uncrossed(i))
                 count++; // bump count.
         }
         int[] primes = new int[count];
         // move the primes into the result
-        for (int i = 0, j = 0; i < crossedOut.length; i++)
+        for (int i = 2, j = 0; i < crossedOut.length; i++)
         {
             if (uncrossed(i)) // if prime
                 primes[j++] = i;
@@ -53,7 +51,7 @@ public class GeneratePrimes
     private static void uncrossIntegersUpTo(int maxValue)
     {
         crossedOut = new boolean[maxValue + 1];
-        for (int i = 0; i < crossedOut.length; i++)
+        for (int i = 2; i < crossedOut.length; i++)
             crossedOut[i] = false;
     }
 
