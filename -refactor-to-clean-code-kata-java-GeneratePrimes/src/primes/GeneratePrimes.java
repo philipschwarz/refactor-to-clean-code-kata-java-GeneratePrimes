@@ -32,7 +32,7 @@ public class GeneratePrimes
         int j;
         for (i = 2; i < Math.sqrt(crossedOut.length) + 1; i++)
         {
-            if (!crossedOut[i]) // if i is uncrossed, cross its multiples.
+            if (uncrossed(i)) // if i is uncrossed, cross its multiples.
             {
                 for (j = 2 * i; j < crossedOut.length; j += i)
                     crossedOut[j] = true; // multiple is not prime
@@ -42,16 +42,21 @@ public class GeneratePrimes
         int count = 0;
         for (i = 0; i < crossedOut.length; i++)
         {
-            if (!crossedOut[i])
+            if (uncrossed(i))
                 count++; // bump count.
         }
         int[] primes = new int[count];
         // move the primes into the result
         for (i = 0, j = 0; i < crossedOut.length; i++)
         {
-            if (!crossedOut[i]) // if prime
+            if (uncrossed(i)) // if prime
                 primes[j++] = i;
         }
         return primes; // return the primes
+    }
+
+    private static boolean uncrossed(int i)
+    {
+        return !crossedOut[i];
     }
 }
