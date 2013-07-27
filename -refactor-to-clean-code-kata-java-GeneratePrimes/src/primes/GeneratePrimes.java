@@ -22,7 +22,7 @@ public class GeneratePrimes
         
         // declarations
         int arraySize = maxValue + 1; // size of array
-        boolean[] f = new boolean[arraySize];
+        boolean[] f = new boolean[maxValue + 1];
         int i;
         // initialize array to true.
         for (i = 0; i < arraySize; i++)
