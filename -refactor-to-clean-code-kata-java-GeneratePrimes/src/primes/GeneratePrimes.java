@@ -21,9 +21,7 @@ public class GeneratePrimes
             return NO_PRIMES; 
         }
         
-        crossedOut = new boolean[maxValue + 1];
-        for (int i = 0; i < crossedOut.length; i++)
-            crossedOut[i] = false;
+        uncrossIntegersUpTo(maxValue);
         // get rid of known non-primes
         crossedOut[0] = crossedOut[1] = true;
         // sieve
@@ -50,6 +48,13 @@ public class GeneratePrimes
                 primes[j++] = i;
         }
         return primes; // return the primes
+    }
+
+    private static void uncrossIntegersUpTo(int maxValue)
+    {
+        crossedOut = new boolean[maxValue + 1];
+        for (int i = 0; i < crossedOut.length; i++)
+            crossedOut[i] = false;
     }
 
     private static boolean uncrossed(int i)
