@@ -12,6 +12,7 @@ package primes;
 public class GeneratePrimes
 {
     private static final int[] NO_PRIMES = new int[0];
+    private static boolean[] crossedOut;
 
     public static int[] generatePrimes(int maxValue)
     {
@@ -20,8 +21,7 @@ public class GeneratePrimes
             return NO_PRIMES; 
         }
         
-        // declarations
-        boolean[] crossedOut = new boolean[maxValue + 1];
+        crossedOut = new boolean[maxValue + 1];
         int i;
         // initialize array to true.
         for (i = 0; i < crossedOut.length; i++)
