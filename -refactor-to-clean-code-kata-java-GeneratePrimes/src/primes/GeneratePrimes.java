@@ -11,12 +11,13 @@ package primes;
  */
 public class GeneratePrimes
 {
-    public static int[] generatePrimes(int maxValue)
+    private static boolean[] f; 
+
+	public static int[] generatePrimes(int maxValue)
     {
         if (maxValue < 2) return new int[0];
         
-        // declarations
-        boolean[] f = new boolean[maxValue + 1];
+        f = new boolean[maxValue + 1];
         int i;
         // initialize array to true.
         for (i = 0; i < f.length; i++)
