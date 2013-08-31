@@ -20,8 +20,12 @@ public class GeneratePrimes
         
         uncrossIntegersUpTo(maxValue);
         crossOutMultiples();
-        
-        int count = 0;
+        transferPrimesToResult();
+        return result;
+    }
+
+	private static void transferPrimesToResult() {
+		int count = 0;
         for (int i = 2; i < crossedOut.length; i++)
         {
             if (uncrossed(i))
@@ -34,8 +38,7 @@ public class GeneratePrimes
             if (uncrossed(i)) // if prime
                 result[j++] = i;
         }
-        return result; // return the primes
-    }
+	}
 
 	private static void crossOutMultiples() {
         double iterationLimit = computeIterationLimit();
