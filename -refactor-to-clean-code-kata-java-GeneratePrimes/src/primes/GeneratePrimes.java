@@ -18,7 +18,6 @@ public class GeneratePrimes
         if (maxValue < 2) return new int[0];
         
         uncrossIntegersUpTo(maxValue);
-        
         crossOutMultiples();
         
         // how many primes are there?
@@ -56,7 +55,7 @@ public class GeneratePrimes
 
 	private static void crossOutMultiplesOf(int i) {
 		for (int j = 2 * i; j < crossedOut.length; j += i)
-		    crossedOut[j] = true; // multiple is not prime
+		    crossedOut[j] = true; 
 	}
 
 	private static void uncrossIntegersUpTo(int maxValue) {
