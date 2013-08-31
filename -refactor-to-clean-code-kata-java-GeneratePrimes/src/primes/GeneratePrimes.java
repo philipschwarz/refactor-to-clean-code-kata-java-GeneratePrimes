@@ -25,14 +25,10 @@ public class GeneratePrimes
     }
 
 	private static void transferPrimesToResult() {
-		int count = countPrimes();
-        result = new int[count];
-        // move the primes into the result
+        result = new int[countPrimes()];
         for (int i = 2, j = 0; i < crossedOut.length; i++)
-        {
-            if (uncrossed(i)) // if prime
+            if (uncrossed(i))
                 result[j++] = i;
-        }
 	}
 
 	private static int countPrimes() {
