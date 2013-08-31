@@ -11,39 +11,39 @@ package primes;
  */
 public class GeneratePrimes
 {
-    private static boolean[] uncrossed; 
+    private static boolean[] crossedOut; 
 
 	public static int[] generatePrimes(int maxValue)
     {
         if (maxValue < 2) return new int[0];
         
-        uncrossed = new boolean[maxValue + 1];
+        crossedOut = new boolean[maxValue + 1];
         // initialize array to true.
-        for (int i = 0; i < uncrossed.length; i++)
-            uncrossed[i] = true;
+        for (int i = 0; i < crossedOut.length; i++)
+            crossedOut[i] = false;
         // get rid of known non-primes
-        uncrossed[0] = uncrossed[1] = false;
+        crossedOut[0] = crossedOut[1] = true;
         // sieve
-        for (int i = 2; i < Math.sqrt(uncrossed.length) + 1; i++)
+        for (int i = 2; i < Math.sqrt(crossedOut.length) + 1; i++)
         {
-            if (uncrossed[i]) // if i is uncrossed, cross its multiples.
+            if (!crossedOut[i]) // if i is uncrossed, cross its multiples.
             {
-                for (int j = 2 * i; j < uncrossed.length; j += i)
-                    uncrossed[j] = false; // multiple is not prime
+                for (int j = 2 * i; j < crossedOut.length; j += i)
+                    crossedOut[j] = true; // multiple is not prime
             }
         }
         // how many primes are there?
         int count = 0;
-        for (int i = 0; i < uncrossed.length; i++)
+        for (int i = 0; i < crossedOut.length; i++)
         {
-            if (uncrossed[i])
+            if (!crossedOut[i])
                 count++; // bump count.
         }
         int[] primes = new int[count];
         // move the primes into the result
-        for (int i = 0, j = 0; i < uncrossed.length; i++)
+        for (int i = 0, j = 0; i < crossedOut.length; i++)
         {
-            if (uncrossed[i]) // if prime
+            if (!crossedOut[i]) // if prime
                 primes[j++] = i;
         }
         return primes; // return the primes
