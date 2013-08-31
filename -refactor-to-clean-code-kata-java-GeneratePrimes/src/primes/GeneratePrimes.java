@@ -40,10 +40,8 @@ public class GeneratePrimes
 	private static void crossOutMultiples() {
         double iterationLimit = computeIterationLimit();
 		for (int i = 2; i < iterationLimit; i++)
-        {
             if (uncrossed(i))
                 crossOutMultiplesOf(i);
-        }
 	}
 
 	/**
