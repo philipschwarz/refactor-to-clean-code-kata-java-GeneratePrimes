@@ -13,8 +13,10 @@ public class GeneratePrimes
 {
     public static int[] generatePrimes(int maxValue)
     {
-        if (maxValue >= 2) // the only valid case
-        {
+        if (maxValue < 2)
+			// maxValue < 2
+            return new int[0]; // return null array if bad input.
+		else {
             // declarations
             int s = maxValue + 1; // size of array
             boolean[] f = new boolean[s];
@@ -50,8 +52,5 @@ public class GeneratePrimes
             }
             return primes; // return the primes
         }
-        else
-            // maxValue < 2
-            return new int[0]; // return null array if bad input.
     }
 }
