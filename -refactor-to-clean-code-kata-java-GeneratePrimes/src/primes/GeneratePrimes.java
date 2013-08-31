@@ -25,12 +25,7 @@ public class GeneratePrimes
     }
 
 	private static void transferPrimesToResult() {
-		int count = 0;
-        for (int i = 2; i < crossedOut.length; i++)
-        {
-            if (uncrossed(i))
-                count++; // bump count.
-        }
+		int count = countPrimes();
         result = new int[count];
         // move the primes into the result
         for (int i = 2, j = 0; i < crossedOut.length; i++)
@@ -38,6 +33,14 @@ public class GeneratePrimes
             if (uncrossed(i)) // if prime
                 result[j++] = i;
         }
+	}
+
+	private static int countPrimes() {
+		int count = 0;
+        for (int i = 2; i < crossedOut.length; i++)
+            if (uncrossed(i))
+                count++;
+		return count;
 	}
 
 	private static void crossOutMultiples() {
