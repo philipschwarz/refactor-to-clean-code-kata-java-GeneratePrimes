@@ -18,32 +18,30 @@ public class GeneratePrimes
         if (maxValue < 2) return new int[0];
         
         f = new boolean[maxValue + 1];
-        int i;
         // initialize array to true.
-        for (i = 0; i < f.length; i++)
+        for (int i = 0; i < f.length; i++)
             f[i] = true;
         // get rid of known non-primes
         f[0] = f[1] = false;
         // sieve
-        int j;
-        for (i = 2; i < Math.sqrt(f.length) + 1; i++)
+        for (int i = 2; i < Math.sqrt(f.length) + 1; i++)
         {
             if (f[i]) // if i is uncrossed, cross its multiples.
             {
-                for (j = 2 * i; j < f.length; j += i)
+                for (int j = 2 * i; j < f.length; j += i)
                     f[j] = false; // multiple is not prime
             }
         }
         // how many primes are there?
         int count = 0;
-        for (i = 0; i < f.length; i++)
+        for (int i = 0; i < f.length; i++)
         {
             if (f[i])
                 count++; // bump count.
         }
         int[] primes = new int[count];
         // move the primes into the result
-        for (i = 0, j = 0; i < f.length; i++)
+        for (int i = 0, j = 0; i < f.length; i++)
         {
             if (f[i]) // if prime
                 primes[j++] = i;
