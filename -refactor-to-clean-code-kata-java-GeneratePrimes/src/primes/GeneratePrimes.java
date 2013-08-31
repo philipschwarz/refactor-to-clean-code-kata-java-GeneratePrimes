@@ -39,11 +39,19 @@ public class GeneratePrimes
     }
 
 	private static void crossOutMultiples() {
-        for (int i = 2; i < Math.sqrt(crossedOut.length) + 1; i++)
+        double iterationLimit = computeIterationLimit();
+		for (int i = 2; i < iterationLimit; i++)
         {
             if (uncrossed(i))
                 crossOutMultiplesOf(i);
         }
+	}
+
+	/**
+	 * TO DO: Explain clearly why it is sufficient to stop when this limit is reached
+	 */
+	private static double computeIterationLimit() {
+		return Math.sqrt(crossedOut.length) + 1;
 	}
 
 	private static void crossOutMultiplesOf(int i) {
