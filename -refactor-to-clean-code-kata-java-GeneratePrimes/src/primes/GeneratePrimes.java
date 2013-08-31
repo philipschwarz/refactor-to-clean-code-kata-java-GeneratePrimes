@@ -11,7 +11,8 @@ package primes;
  */
 public class GeneratePrimes
 {
-    private static boolean[] crossedOut; 
+    private static boolean[] crossedOut;
+	private static int[] result; 
 
 	public static int[] generatePrimes(int maxValue)
     {
@@ -20,21 +21,20 @@ public class GeneratePrimes
         uncrossIntegersUpTo(maxValue);
         crossOutMultiples();
         
-        // how many primes are there?
         int count = 0;
         for (int i = 2; i < crossedOut.length; i++)
         {
             if (uncrossed(i))
                 count++; // bump count.
         }
-        int[] primes = new int[count];
+        result = new int[count];
         // move the primes into the result
         for (int i = 2, j = 0; i < crossedOut.length; i++)
         {
             if (uncrossed(i)) // if prime
-                primes[j++] = i;
+                result[j++] = i;
         }
-        return primes; // return the primes
+        return result; // return the primes
     }
 
 	private static void crossOutMultiples() {
