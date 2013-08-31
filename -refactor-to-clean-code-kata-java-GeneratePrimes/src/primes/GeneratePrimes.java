@@ -17,10 +17,7 @@ public class GeneratePrimes
     {
         if (maxValue < 2) return new int[0];
         
-        crossedOut = new boolean[maxValue + 1];
-        // initialize array to true.
-        for (int i = 0; i < crossedOut.length; i++)
-            crossedOut[i] = false;
+        uncrossIntegersUpTo(maxValue);
         // get rid of known non-primes
         crossedOut[0] = crossedOut[1] = true;
         // sieve
@@ -48,6 +45,12 @@ public class GeneratePrimes
         }
         return primes; // return the primes
     }
+
+	private static void uncrossIntegersUpTo(int maxValue) {
+		crossedOut = new boolean[maxValue + 1];
+        for (int i = 0; i < crossedOut.length; i++)
+            crossedOut[i] = false;
+	}
 
 	private static boolean uncrossed(int i) {
 		return !crossedOut[i];
