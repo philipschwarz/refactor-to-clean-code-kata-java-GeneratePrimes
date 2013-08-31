@@ -13,8 +13,7 @@ public class GeneratePrimes
 {
     public static int[] generatePrimes(int maxValue)
     {
-        if (maxValue < 2)
-            return new int[0]; 
+        if (maxValue < 2) return new int[0];
         
         // declarations
         int s = maxValue + 1; // size of array
