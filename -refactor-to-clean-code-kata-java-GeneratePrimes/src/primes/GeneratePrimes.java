@@ -21,8 +21,38 @@ public class GeneratePrimes
         uncrossIntegersUpTo(maxValue);
         crossOutMultiples();
         transferPrimesToResult();
+        
         return result;
     }
+
+	private static void uncrossIntegersUpTo(int maxValue) {
+		crossedOut = new boolean[maxValue + 1];
+        for (int i = 2; i < crossedOut.length; i++)
+            crossedOut[i] = false;
+	}	
+	
+	private static void crossOutMultiples() {
+		double iterationLimit = computeIterationLimit();
+		for (int i = 2; i < iterationLimit; i++)
+			if (uncrossed(i))
+				crossOutMultiplesOf(i);
+	}
+
+	private static boolean uncrossed(int i) {
+		return !crossedOut[i];
+	}	
+	
+	/**
+	 * TO DO: Explain clearly why it is sufficient to stop when this limit is reached
+	 */
+	private static double computeIterationLimit() {
+		return Math.sqrt(crossedOut.length) + 1;
+	}	
+	
+	private static void crossOutMultiplesOf(int i) {
+		for (int j = 2 * i; j < crossedOut.length; j += i)
+			crossedOut[j] = true; 
+	}
 
 	private static void transferPrimesToResult() {
         result = new int[countPrimes()];
@@ -37,34 +67,5 @@ public class GeneratePrimes
             if (uncrossed(i))
                 count++;
 		return count;
-	}
-
-	private static void crossOutMultiples() {
-        double iterationLimit = computeIterationLimit();
-		for (int i = 2; i < iterationLimit; i++)
-            if (uncrossed(i))
-                crossOutMultiplesOf(i);
-	}
-
-	/**
-	 * TO DO: Explain clearly why it is sufficient to stop when this limit is reached
-	 */
-	private static double computeIterationLimit() {
-		return Math.sqrt(crossedOut.length) + 1;
-	}
-
-	private static void crossOutMultiplesOf(int i) {
-		for (int j = 2 * i; j < crossedOut.length; j += i)
-		    crossedOut[j] = true; 
-	}
-
-	private static void uncrossIntegersUpTo(int maxValue) {
-		crossedOut = new boolean[maxValue + 1];
-        for (int i = 2; i < crossedOut.length; i++)
-            crossedOut[i] = false;
-	}
-
-	private static boolean uncrossed(int i) {
-		return !crossedOut[i];
 	}
 }
