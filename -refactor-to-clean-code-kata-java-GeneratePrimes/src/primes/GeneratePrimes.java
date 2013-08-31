@@ -41,12 +41,14 @@ public class GeneratePrimes
 	private static void crossOutMultiples() {
         for (int i = 2; i < Math.sqrt(crossedOut.length) + 1; i++)
         {
-            if (uncrossed(i)) // if i is uncrossed, cross its multiples.
-            {
-                for (int j = 2 * i; j < crossedOut.length; j += i)
-                    crossedOut[j] = true; // multiple is not prime
-            }
+            if (uncrossed(i))
+                crossOutMultiplesOf(i);
         }
+	}
+
+	private static void crossOutMultiplesOf(int i) {
+		for (int j = 2 * i; j < crossedOut.length; j += i)
+		    crossedOut[j] = true; // multiple is not prime
 	}
 
 	private static void uncrossIntegersUpTo(int maxValue) {
